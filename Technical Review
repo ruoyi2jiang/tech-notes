@@ -1,0 +1,322 @@
+Technical Review C# & common knowledge
+
+What's a CLASS : Blueprint to create object
+INSTANCE : an object created from the class, often using the constructor method to add in detail. Default constructor will create blank object.
+SEALED CLASS : class which cannot have a derived class
+ABSTRACT CLASS : class with at least 1 abstruct method
+ABSTRUCT METHOD : method without implementation
+INTERFACE : fully abstract
+VIRTUAL KEYWORD : used in a method which can be overridden.
+OVERRIDE KEYWORD : derived method implements own fuctionality compared with parent base class
+OVERLOADING : same method with different parameters DoThis(int x) DoThis(string y)
+ENUM : list of elements
+STRUCT : mini class - value type is stored in fast stack memory. fields only primitives
+OOP 4 PILLARS 
+	Inheritance		deriving from base class
+	encapsulation	private members
+	abstruction 	public properties allow access to private members
+	polymorphism	inheritence with optional override
+SOLID : best to have one method only
+S single responsibility : one class does one thing
+O open for extension, closed for modification (think plugin extends software but does not modify it)
+L LISKOV : swap parent/child classes around
+I Interfaces : keep small one method only
+D dependency inversion (parent/child interchange) design using abstract classes as good practice
+
+API
+	get    	/customers/			SQL SELECT ALL
+	get 	/customers/10		SQL SELECT 1
+	post 	/customers/ 		SQL INSERT
+	post 	/customers/10		SQL UPDATE
+
+	put 	/customers/10 		UPDATE
+	delete 	/customers/10 		DELETE
+
+CRUD	create 	read	update 	delete
+SQL 	insert	select	update	delete
+SQL database	create 	drop if exists, alter
+
+SCRUM 3 PILLARS : Adaptation, Inspection, Transparency
+Agile - adaptable, flexible, work in 'sprint'
+    Collaboration over negotiation
+    People over process
+    Working software over documentation
+Scrum 3 roles
+	Scrum master : ensure smooth workflow, remove blockers
+	Product owner : owns product backlog (list of requirments) also sprint backlog, 
+					definition of done by dev team -- work gets approved here
+	Dev : 3-9 self-organising, multi-skilled, joinly accountable
+Sprint 4 meetings
+	plan, daily : yesterday, today, blockers, review - present to client work done, retro - internal review
+SDLC : feasibility, requirment, analysis, planning, design, build, test, release, maintain, document
+Artifact: Any tangible object that products work
+
+Waterfall: linear
+Agile : adapt to change
+Kanban : 24/7 rolling with limit on current tasks
+JIT just in time
+
+Reference type
+value type = primitive
+stack memory
+heap memory
+primitive 'primitive structure' ie very simple objects : in memory we declare the object give it a type, and also store data with object in memory at that location (in the stack) eg int takes 32 bits storage
+	short			16 bits/2
+	int 			32 bits/4 bytes
+	long		    64 		8
+	float			32
+	double 			64
+	decimal			128  minimise rounding errors using decimal
+	bits			0/1
+	boolean 		T/F
+	bytes           8 bits
+	byte[] buffer   used to store/carry data eg to memory on local computer
+						fastest possible storage type
+	char   
+	nibble			4 bits 1010  	hexadecimal 0-9 a-f
+					mac FE45CC33EEAA
+
+operater
+	% 			remainder
+	int/int 	fractional division : taking whole number result
+				12/7 =1
+				100/8 = 12
+	>> <<		bit shift operation  multiply/divide by 2
+				5>>1 result is 2
+	&&			AND (short circuit (1==0)&&(1==1))
+	|| 			OR
+	^ 			XOR 1^1 ==> 0   1^0 =1   0^0=0
+
+STRUCT    		mini class : contains only primitives and store on stack
+string 			array of char[] 	myString[0] first letter
+pass by reference 	work with pointer to object so no matter where you are working, if you alter the object you alter the root
+pass by value 		copy is independent to original
+
+collection
+	Array 			Index[n]
+					fixed size  immutable
+					lightning fast to read/write because know exact memory address
+	list 			varying length
+					index[n]
+					insert/remove from middle
+	arraylist 		list of general object type : no index
+	queue 			FIFO: bus queue first in first out
+					ENQUEUE add the end of queue
+					DEQUEUE remove from front of queue
+					peek inspect without remove first item
+					contains
+	stack 			LIFO (Rugby ruck) Computing: running live application
+					PUSH on
+					POP off
+	hashset 		like a dictionary with no index (no duplicates)
+	linkedlist 		used for storing large object with ability to add/remove items very quickly in middle. only storing pointers to objects. no index. slow 
+					to parse but quick to add/remove
+	ienumerable  	numeric index such as array or list
+	dictionary 		Key 				Value
+					key is unique
+Generic <T> 		T is any type eg string, int myClass
+					<int>			
+
+Abstract class 		one or more abstract methods 
+Abstract method     abstract void DOThis();
+Interfaces          fully abstract, fully public properties (not fields) and methods. Public keywords missing but implied
+		Class can inherit from one class/abstract class but implement (use) many interfaces
+	IQueryable 		linq query output : lazy loading ie query not run until last possible moment when data required
+	IEnumerable 	Enumerate (count)
+	IDisposable 	databases, files, streams outside .net compiled 'runtime'
+					Dispose() method can be attached to these objects from outside (dynamic objects) so programer cab manually dispose of them
+					using(here){//code}
+					// automatically disposed of here items
+
+[Serializable]  attribute above class
+
+Web Terms:
+Bootstrap : 	css framework for web development
+Angular : 		front end framework by Google (good to connect to back end data type) 
+React : 		by facebook, virtual dom so repaint only elements which have changed
+Redux : 		global 'state' of application and variables across whole app
+Vue : 			javascript framework best of angular and react
+indie project:	not backed by big company but small organisation
+Vuex : 			state management library of Vue
+MVC : 			model: data view: page controller: url handling
+Synchronous: 	line by line
+Asynchronous	calls sub-thread, continues with main thread. Callback method run when async 
+				task 'returns' or completes
+Typescript .ts: strict javascript. Uses 'types' ie all data is strictly type like C#
+nativescript :	framework for developing mobile apps
+Cordova : 		make mobile apps
+NodeJS : 		javascript on server as standalone language (runtime environment)
+NPM : 			package manager(install modules/libraries) for js
+Yarn: 			upgrade to npm
+Bower: 			handle library dependencies
+Webpack : 		pack/bundle libraries together for easy deployment(eg to large zip)
+jQuery : 		standardise commands across browsers
+CanIUse.com 	% browsers using feature
+PHP :			world's most popular web server side rendering engine : facebook
+Ruby : 			high-level language : Command uses spaces precisely
+Python : 		high-level languages: use space as part of syntax
+Nuget : 		c# libraries
+#id 			one of them per webpage
+.class 			many per webpage
+Cookie 			text file set to server with personal info on it
+Regex 			pattern matching
+Session 		shopping basket with timeout
+API 			expose data across web
+SPA 			one url but full app with different pages from same url
+SAAS 			software as a service $5 spotify
+WebSockets	ws://  wss://  free way of sending real time chat data across web
+Web Workers 	javascript background task
+Cloud 			someone else running server; you log in and use software
+Virtual Desktop:log in to any computer and receive same visual experience; personalised apps
+				citrix runon client but data delivered as a stream from server(render as server)
+Citrix 			industry standard for virtual desktops
+IP 				1.2.3.4
+Port 					:12345 channel inside IP
+Protocol 		language which carries data  TCP(web) SMTP(email) DNS(name) http(web page)
+Razor 			c# in browser
+.cshtml 		razor
+Blazor 			upgrade to razor : c# browser at runtime
+IIS 			web server
+Azure 			microsoft cloud
+AWS  			amazon cloud
+Apache 			open source web server
+LAMP stack 		Linux Apache mysql php  websites
+WAMP stack 		windows...
+Open Source 	free
+MIT licence 	open source license
+Cross platform  windows mac linux
+MYSQL 			free sql database
+PHPMyAdmin 		paid software to manage free sql database
+CORS   			cross origin response: allows web requests between domains
+-ng 			angular prefix
+v-for 			vue element
+document.getElementId/Tag/ClassName: raw js to identify element on page
+Flexbox 		1d layout
+Grid 			2d layout
+MaterialUI 		google presentation
+Vuetify 		vue + materialUI
+Mixin 			modify css
+Preprocessor 	pre-compile css before you use it
+SCSS 			example of this
+Responsive menu:big=>small and page looks good
+Collapsing menu:a b c d 		--- drop the menu down
+Carousel:  		moving image on main page to attract attention
+Glyphicon: 		Forward >> button very small icon image
+Modal popup:   	tiny window pops up to ask question eg 'are you sure?'
+<pre> 			render raw text/code with all spaces intact
+
+Large Project structure
+	
+	.sln 		Solution
+
+		Main.exe 	App which runs
+			Private classes
+			public classes
+			reference library.dll
+				use classes from library
+
+		Library.dll
+			public classes used in multiple projects
+
+		DLL or EXE is called Assembly
+
+			Assembly has a version and also is signed by a computer certificate
+				Allows computer to differentiate versions of same name but different versions
+					MyApp v1.0.1
+					MyApp v1.0.2
+
+Encoding
+	
+	File Extension 
+		.txt
+		.jpg
+			Rename .txt to .jpg what is it?
+
+	File Signatures
+		Pattern of 1's and 0's at the start of a file when it's laid down on disk ie written which indicates the file type.
+
+		File signatures are publicly known
+			Drive recovery programs can scan the disk for known signatures in order to attempts 
+	
+	ASCII
+		USA built the first computers ==> US English is default character set on web.
+
+		7 bits ie number 0 through 127 (int)char will yield this number eg (int)'f'
+
+	UTF8
+		0 added on end of ASCII
+		01010101
+		Web is built using characters exclusively from UTF8 set
+			getbootstrap.com ==> <meta charset = "utf-8">
+
+		Base64 is therefore used to transport all data which is not in this simple character set
+			<<complex data>> ==> chop it into blocks of 6 bit wide
+							 ==> each 6-bit bloack allocated ascii letter
+							 ==> send data as ascii
+							 ==> process reversed at receiving end
+
+	UTF16
+		Russian/Chinese languages etc have many characters
+		using 16 bits we can describe most languages in world
+			ASCII 2^7 = 128
+			UTF16 2^16 = 65536 characters
+
+	UNICODE = UTF16
+
+	C# .NET default encoding is 16 bit    (but .NET core default is 8 bit?? may not be right)
+
+	Secure string can be used as an input type which is slightly more secure than standard string
+	No strings are completely secure.
+
+Streaming and serialization
+
+	Streaming = getting data across internet
+		Stream to ...
+			File system (local computer)
+				.NET Runtime ===> think of hard drive a remote system --> streaming to/from hard drive
+			Memory of local computer(ie ram)
+				Memory is different because can allocate a fixed number of bytes for the data 	
+					allocate the start byte and finish byte of data exactly.
+					Pointer at set position.
+
+			Network
+				http://			web
+				https://		secure web
+				ftp://			files
+				smb://			shares
+				//server/share	shares
+
+		ASYNC		not wait: continue so user 'feels' like app is still 'responsive'. Data will 
+					return and another method runs called the 'callback' method.
+		SYNC		wait for operation: 'pause' for 'hang' whole program
+
+		How much does programmer get involved?
+			Answer : almost none!
+				make call and let os ==> handle detail. Programmer just handle incoming data.
+
+Serialization
+	
+	Converting data into a form for 'streaming' ie a linear sequence of 1's and 0's to be sent across internet
+
+	Customer Object
+		==> serialise part of it 101010101010101010101
+		==> send
+		==> unpack ==> recreate customer at other end (deserialisation)
+
+	serialise to 3 types of data for sending
+		XML		UTF8 characters		primarily for web
+		JSON	UTF8 characters		primarily for web 	newtonsoft.json(3rd party library)
+		BINARY 	1010101010101 ==> fastest type as no data conversion
+							  	==> use to send data to RAM
+							  	primarily for ram/memory
+							  	(files can be any of these three xml/json/binary other file type)
+
+
+
+Full Stack Well-rounded developer who has skills both in the back-end database realm, using APIs and also reading data to a front-end visual client eg web page or other app reading JSON or other data
+
+CI Continuous Integration : Work that you push to the local 'feature' branch gets tested straight away.  If it passes the tests it gets integrated into the local 'dev' branch and all other developers working off that 'dev' branch integrate your work into their own work straight away.  This helps to avoid conflicts after one person has done months and months of work, finds a conflict, then has to start again!
+
+CD Continuous Delivery - all developers push features and bug fixes past the testing.  If passes, pushed to 'dev' branch.  Every day or so (release date) push to master ==> push this into production.
+
+
